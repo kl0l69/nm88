@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOHAMMED HUSSAIN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b001f; /* Updated background color */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png'), 
+            url('https://www.transparenttextures.com/axiom-pattern.png');
+            background-size: cover;
+            background-attachment: fixed;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        }
+        body.night-mode {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            position: relative;
+            transition: background-color 0.5s, color 0.5s;
+            border-bottom: 3px solid #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+            animation: typing 5s steps(40) 1, blinkTextCursor 0.7s steps(40) infinite normal;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blinkTextCursor {
+            from { border-right-color: rgba(255, 255, 255, 0.75); }
+            to { border-right-color: transparent; }
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            position: relative;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .container.night-mode {
+            background-color: rgba(50, 50, 50, 0.8);
+        }
+        .glowing-box {
+            border: 1px solid #999;
+            box-shadow: 0 0 20px #999;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            transition: box-shadow 0.5s, transform 0.3s;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .glowing-box:hover {
+            box-shadow: 0 0 40px #666;
+            transform: scale(1.05);
+        }
+        h1, h2, h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        p {
+            margin: 0 0 20px 0;
+            color: #666;
+        }
+        .section {
+            margin-bottom: 40px;
+            position: relative;
+            transition: transform 1.5s ease-in-out, opacity 1.8s; /* سلو موشن */
+            opacity: 0;
+            transform: translateY(20px);
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section:hover {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Shadow effect on hover */
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+        .section h2 {
+            display: flex;
+            align-items: center;
+        }
+        .section h2::before {
+            content: "";
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            background-size: contain;
+            display: inline-block;
+        }
+        .section-about h2::before { background-image: url('https://img.icons8.com/ios-filled/50/000000/user.png'); }
+        .section-education h2::before { background-image: url('https://img.icons8.com/ios-filled/50/000000/school.png'); }
+        .section-experience h2::before { background-image: url('https://img.icons8.com/ios-filled/50/000000/briefcase.png'); }
+        .section-skills h2::before { background-image: url('https://img.icons8.com/ios-filled/50/000000/skills.png'); }
+        .section-projects h2::before { background-image: url('https://img.icons8.com/ios-filled/50/000000/project.png'); }
+        .section-contact h2::before { background-image: url('https://img.icons8.com/ios-filled/50/000000/address-book.png'); }
+        .toggle-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url('https://img.icons8.com/ios-filled/50/ffffff/sun.png') no-repeat center center;
+            background-size: 60%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .toggle-button.night-mode {
+            background: url('https://img.icons8.com/ios-filled/50/ffffff/moon.png') no-repeat center center;
+            background-size: 60%;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .social-icons a {
+            color: 	#4B5320;
+            font-size: 24px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        .show-social-icons .social-icons {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #4B5320 ;
+            transition: background-color 0.5s, color 0.5s;
+            font-family: 'Courier New', Courier, monospace;
+            animation: fadeInOut 4s infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        .footer p {
+            margin: 0;
+        }
+        .binary-name {
+            font-family: 'Droid Arabic Naskh',  sans-serif; /* تغيير نوع الخط */
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s, text-shadow 0.3s;
+        }
+        .binary-name:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* تأثير الظل عند التحريك */
+            animation: glow 1s infinite alternate;
+        }
+        @keyframes glow {
+            to {
+                opacity: 0.8;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+        .binary-name {
+            display: inline-block;
+            
+            font-size: 30px; /* قم بتكبير حجم الخط حسب الحاجة */
+            cursor: pointer;
+            position: relative;
+            animation: wave 2s ease-in-out infinite, flag 4s linear infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px); /* ارتفاع النص في وسط الأمواج */
+            }
+        }
+
+        @keyframes flag {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(2px); /* حركة اليمين */
+            }
+            50% {
+                transform: translateX(0); /* عدم التحرك */
+            }
+            75% {
+                transform: translateX(3px); /* حركة اليسار */
+            }
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, color 0.3s;
+        }
+        .nav-icon:hover {
+            transform: scale(1.1);
+            color: #f39c12;
+        }
+        .nav-icon p {
+            margin: 0;
+            font-size: 12px;
+        }
+        .nav-icons {
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            transition: background-color 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>MOHAMMED HUSSAIN</h1>
+            <div class="nav-icon" onclick="scrollToSection('.section-about')">
+                <i class="fas fa-user"></i>
+                <p>عنّي</p>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('.section-education')">
+                <i class="fas fa-school"></i>
+                <p>التعليم</p>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('.section-experience')">
+                <i class="fas fa-briefcase"></i>
+                <p>الخبرات</p>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('.section-skills')">
+                <i class="fas fa-cogs"></i>
+                <p>المهارات</p>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('.section-projects')">
+                <i class="fas fa-project-diagram"></i>
+                <p>المشاريع</p>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('.section-contact')">
+                <i class="fas fa-envelope"></i>
+                <p>التواصل</p>
+            </div>
+        <div class="toggle-button" onclick="toggleNightMode()"></div>
+    </header>
+
+    <div class="container">
+        <div class="section section-about glowing-box">
+            <h2>عنّي</h2>
+            <p>انـا محمـد بن حسيــن أل القطـعاني.</p>
+        
+        </div>
+        <div class="section section-education glowing-box">
+            <h2>التعليم</h2>
+            <p> حصلت على شهادة في مجال البرمجة وخاصة مجال تصميم وتطوير الويب.</p>
+            <p>_______</p>
+            <p>بس انا عمك بردو من غيــر تعليم .</p>
+           
+        </div>
+        <div class="section section-experience glowing-box">
+            <h2>الخبرات</h2>
+            <p>اكتسبت خبرة من خلال العمل في المواقع المستقلة ومع عملاء مختلفين .</p>
+        </div>
+        <div class="section section-skills glowing-box">
+            <h2>المهارات</h2>
+            <p>      مجال البرمجة   </p>
+            <p>HTML, CSS, JavaScript, React, Node.js, </p>
+             <p>  ـــــــــــ</p>
+            <p>       مجال التصميم   </p>
+             <p>Photoshop, Illustrator.</p>
+        </div>
+        <div class="section section-projects glowing-box">
+            <h2>المشاريع</h2>
+            <p>مشروع 1: موقع تعريفي لشركة تجارية.</p>
+            <p>مشروع 2: تطبيق جوال لإدارة المهام .</p>
+            <p>مشروع 3: منصة تعليمية عبر الإنترنت.</p>
+        </div>
+       
+    <section class="section section-contact">
+        <h2><span>اتصل بنا</span></h2>
+        <div class="glowing-box">
+            <p>يمكنك التواصل معي على:</p>
+            <div class="social-links">
+                <a href="mailto:ayrn194@gmail.com" target="_blank"><i class="fas fa-envelope" style="color: #6a0dad;"></i></a>
+                <span style="margin: 0 10px;">|</span> <!-- فاصل بين الأيقونات -->
+                <a href="https://www.facebook.com/profile.php?id=100083579905529" target="_blank"><i class="fab fa-facebook" style="color: #6a0dad;"></i></a>
+                <span style="margin: 0 10px;">|</span> <!-- فاصل بين الأيقونات -->
+                <a href="https://www.instagram.com/kl0l69" target="_blank"><i class="fab fa-instagram" style="color: #6a0dad;"></i></a>
+                <span style="margin: 0 10px;">|</span> <!-- فاصل بين الأيقونات -->
+                <a href="https://wa.me/+201141345223" target="_blank"><i class="fab fa-whatsapp" style="color: #6a0dad;"></i></a>
+                <span style="margin: 0 10px;">|</span> <!-- فاصل بين الأيقونات -->
+                <a href="https://kl0l69.sarhne.com" target="_blank"><i class="fas fa-comments" style="color: #6a0dad;"></i></a>
+            </div>
+        </div>
+    </section>
+        <p><span class="binary-name">حمــــــــصة </span></p>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        });
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        function toggleNightMode() {
+            document.body.classList.toggle('night-mode');
+            document.querySelector('.toggle-button').classList.toggle('night-mode');
+            document.querySelector('.container').classList.toggle('night-mode');
+        }
+
+        function scrollToSection(selector) {
+            const section = document.querySelector(selector);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
